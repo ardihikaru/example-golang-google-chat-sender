@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  # RabbitMQ Cluster
+  # Web page: http://localhost:15672
+  # Example: https://github.com/micahhausler/rabbitmq-compose
+  # Metrics HTTP APIs: https://www.rabbitmq.com/monitoring.html#rabbitmq-metrics
+  # CLI: https://www.rabbitmq.com/management-cli.html
+  # HTTP API: https://www.rabbitmq.com/management.html#http-api
+  # HTTP API Doc: https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.9.13/deps/rabbitmq_management/priv/www/api/index.html
+  # Example delete: https://www.cloudamqp.com/blog/how_to_delete_all_messages_in_a_queue.html#:~:text=RabbitMQ%20Management%20Interface,-A%20queue%20can&text=Click%20the%20Queue%20tab%20and,right%20to%20empty%20the%20queue.
+  # AliceMQ (RMQ Visualizer): https://github.com/alicelabs/alicemq
+  rabbitmq-1:
+    image: rabbitmq:3.9.10-management
+    hostname: rabbitmq-1
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./config/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./config/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
+      # Don't forget to chmod erlang.cookie to 600 if using the docker volume hack.
+#      - ./data/rabbitmq/erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
