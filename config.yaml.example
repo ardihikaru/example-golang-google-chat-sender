@@ -1,0 +1,17 @@
+# general configuration
+general:
+  # valid value: dev, stag, prod
+  buildMode: "dev"
+
+# message log
+log:
+  level: "DEBUG"
+  format: "json"
+
+google:
+  serviceAccount: /dir/service-account.json
+  spaces: ["xxxxxx"]
+
+scheduler:
+  # format -> HH:mm:SS
+  schedules: ["08:14:00", "09:12:00"]
